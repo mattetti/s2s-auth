@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = S2S::Auth::VERSION
   spec.authors       = ["Matt Aimonetti"]
   spec.email         = ["mattaimonetti@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{S2S authentication lib based on ActiveSupport's crypto.}
+  spec.description   = %q{Generates/parses encrypted and signed tokens.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -22,5 +22,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
 
-  spec.add_dependency "activesupport", "=> 3.0"
+  spec.add_dependency "activesupport", ">= 3.0"
 end

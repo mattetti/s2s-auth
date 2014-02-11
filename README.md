@@ -22,11 +22,13 @@ Or install it yourself as:
 You need to setup the gem by setting four values:
 
 * app name
-* internal secret
-* secret salt
-* sign salt
+* secret
+* encryption salt
+* signature salt
 
 ```ruby
+require "s2s/auth"
+
 # setup
 S2S::Auth.setup({secret: "this is my secret",
     app: "test",

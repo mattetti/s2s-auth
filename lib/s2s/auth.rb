@@ -4,7 +4,7 @@ require "active_support/key_generator"
 require "active_support/message_verifier"
 require "active_support/message_encryptor"
 require "active_support/key_generator"
-require "json"
+require_relative "serializer"
 
 module S2S
   module Auth
@@ -32,7 +32,7 @@ module S2S
         raise ArgumentError.new("This module needs to be setup following keys: secret, app, salt, sign_salt")
       end
       @iterations = opts[:iterations] || opts["iterations"] || 1000
-      @serializer = opts[:serializer] || opts["serializer"] || JSON
+      @serializer = opts[:serializer] || opts["serializer"] || S2S::Auth::JsonSerializer
       keygen = ActiveSupport::CachingKeyGenerator.new(ActiveSupport::KeyGenerator.new(@secret, iterations: @iteration))
       secret = keygen.generate_key(@salt)
       sign_secret = keygen.generate_key(@sign_salt)

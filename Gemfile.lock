@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    s2s-auth (0.0.2)
+    s2s-auth (0.0.3)
       activesupport (>= 3.0)
 
 GEM

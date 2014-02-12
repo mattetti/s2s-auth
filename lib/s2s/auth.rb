@@ -31,9 +31,9 @@ module S2S
       if [@secret, @app_name, @salt, @sign_salt].any?{|v| v.nil? || v.empty?}
         raise ArgumentError.new("This module needs to be setup following keys: secret, app, salt, sign_salt")
       end
-      @iterations = opts[:iterations] || opts["iterations"] || 1000
       @serializer = opts[:serializer] || opts["serializer"] || S2S::Auth::JsonSerializer
-      keygen = ActiveSupport::CachingKeyGenerator.new(ActiveSupport::KeyGenerator.new(@secret, iterations: @iteration))
+      @iterations = opts[:iterations] || opts["iterations"] || 1000
+      keygen = ActiveSupport::CachingKeyGenerator.new(ActiveSupport::KeyGenerator.new(@secret, iterations: @iterations))
       secret = keygen.generate_key(@salt)
       sign_secret = keygen.generate_key(@sign_salt)
       @encryptor = ActiveSupport::MessageEncryptor.new(secret, sign_secret, { serializer: @serializer } )
